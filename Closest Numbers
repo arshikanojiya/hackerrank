@@ -1,0 +1,18 @@
+def closestNumbers(arr):
+    # Write your code here
+    sorted_arr = sorted(arr)
+    smallest_diff = float('inf')
+    diff_arr = []
+    for i in range(n - 1):
+        first = sorted_arr[i]
+        second = sorted_arr[i+1]
+        diff = second - first
+        if diff < smallest_diff:
+            smallest_diff = diff
+            diff_arr = [first, second]
+        elif diff == smallest_diff:
+            diff_arr.append(first)
+            diff_arr.append(second)
+            
+    return diff_arr
+    
