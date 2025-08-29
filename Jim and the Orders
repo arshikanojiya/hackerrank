@@ -1,0 +1,12 @@
+vector<int> jimOrders(vector<vector<int>> orders) {
+    vector<vector<int>> temp;
+    for(int i = 0; i < orders.size(); i++){
+        int deliver = orders[i][0] + orders[i][1];
+        temp.push_back({deliver, i+1});
+    }
+    sort(temp.begin(), temp.end());
+    vector<int> result;
+    for(auto element: temp)result.push_back(element[1]);
+    
+    return result;
+}
