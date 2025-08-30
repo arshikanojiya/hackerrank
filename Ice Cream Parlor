@@ -1,0 +1,11 @@
+def icecreamParlor(m, arr):
+    # Write your code here
+    
+    temp = {}
+    
+    for i in range(len(arr)):
+        diff = m - arr[i]
+        if temp.get(diff):
+            return [temp.get(diff), i+1]
+        else:
+            temp[arr[i]] = i + 1
