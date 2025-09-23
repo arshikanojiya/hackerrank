@@ -1,0 +1,22 @@
+void minimumBribes(vector<int> q) {
+    int totalBribes = 0;
+
+    for (int i = 0; i < q.size(); i++) {
+        if (q[i] - (i + 1) > 2) { // If the difference between an elements' initial position and it's final position is greater than 2,
+            // that means it moved to the left more than twice, which means it bribed more than twice. That means the line's Too Chaotic.
+            cout << "Too chaotic" << endl;
+            return;
+        }
+
+        // Start from one position ahead (in the line) of where q[i] *could* have started (i.e at an index of either index 0 or q[i] - 2, whichever is higher). 
+        // Count how many people with a higher position than q[i] are in front of q[i] in the queue (i.e behind q[i] in the array), 
+        // because each of those people must have bribed their way past q[i].
+        for (int j = max(0, q[i] - 2); j < i; j++) {
+            if (q[j] > q[i]) { 
+                totalBribes++;
+            }
+        }
+    }
+
+    cout << totalBribes << endl;
+}
