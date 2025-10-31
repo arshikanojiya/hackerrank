@@ -1,0 +1,4 @@
+def pairs(k, arr):
+    s1 = set(arr)
+    s2 = set(i + k for i in s1)
+    return len(s1 & s2)
