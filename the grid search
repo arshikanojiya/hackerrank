@@ -1,0 +1,2 @@
+def gridSearch(G, P):
+    return "YES" if re.search(f".{{{len(G[0]) - len(P[0]) + 1}}}".join(P), " ".join(G)) else "NO"
