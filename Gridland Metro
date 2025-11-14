@@ -1,0 +1,24 @@
+from collections import defaultdict
+
+def gridlandMetro(n, m, k, track):
+    
+    row_record = defaultdict(list)
+    for r, c1, c2 in track:
+        if r not in row_record:
+            row_record[r] = [c1, c2]
+        else:
+            st, ed = row_record[r][0], row_record[r][1]
+            if c1 > ed:
+                row_record[r][1] += c2 - c1 + 1
+            else:
+                row_record[r][1] = max(ed, c2)
+            if c2 < st:
+                row_record[r][0] -= c2 - c1 + 1
+            else:
+                row_record[r][0] = min(st, c1)
+            
+    total_num = n * m
+    for st, ed in row_record.values():
+        total_num -= ed - st + 1
+        
+    return total_num
